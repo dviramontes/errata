@@ -1,6 +1,6 @@
 # Errata
 
-> You know for like error handling...
+> Errors as values
 
 ## Usage
 
@@ -9,7 +9,7 @@ FIXME: write usage documentation!
 Invoke a library API function from the command-line:
 
     $ clojure -X errata.errata/init :a 1 :b '"two"'
-    {:a 1, :b "two"} "It works!"
+    {:a 1, :b "two"}
 
 Run the project's tests (they'll fail until you edit them):
 

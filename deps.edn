@@ -17,4 +17,9 @@
             :exec-args {:installer :local :artifact "errata.jar"}}
   :deploy {:replace-deps {slipset/deps-deploy {:mvn/version "0.1.5"}}
            :exec-fn deps-deploy.deps-deploy/deploy
-           :exec-args {:installer :remote :artifact "errata.jar"}}}}
+           :exec-args {:installer :remote :artifact "errata.jar"}}
+  :clj-kondo {:extra-deps {clj-kondo/clj-kondo {:mvn/version "RELEASE"}}
+              :main-opts  ["-m" "clj-kondo.main"]}
+  :repl      {:extra-paths ["dev"]
+              :main-opts  ["-m" "rebel-readline.main"]
+              :extra-deps  {com.bhauman/rebel-readline {:mvn/version "0.1.4"}}}}}

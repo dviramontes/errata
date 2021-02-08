@@ -1,7 +1,8 @@
 (ns errata.errata-test
   (:require [clojure.test :refer :all]
-            [errata.errata :refer :all]))
+            [errata.errata :as errata]))
 
 (deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
+  (testing "keys as functions to maps and viceversa"
+    (is (= :ok (:value (errata/init :ok))))
+    (is (= :ok ((errata/init :ok) :value)))))

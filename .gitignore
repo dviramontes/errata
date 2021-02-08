@@ -14,3 +14,4 @@
 .clj-kondo/.cache
 # calva 
 .calva
+.rebel_readline_history
