@@ -1,4 +1,4 @@
-.PHONY: repl lint test
+.PHONY: repl lint test build
 
 repl: 
 	clj -M:repl
@@ -8,3 +8,6 @@ lint:
 
 test:
 	clojure -M:test:runner
+
+build:
+	clojure -X:jar
