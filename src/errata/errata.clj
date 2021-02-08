@@ -3,8 +3,11 @@
 
 (defprotocol Result
   "Implement <ok> & <err> as values"
+  (ok [result value] "set value")
+  (err [result error] "set err")
   (ok? [result] "if value")
   (err? [result] "if error"))
+  ;; (is? [result error] ...) error comparison
   ;; (ok-n [result])
   ;; (err-n [result]))
 
@@ -13,6 +16,8 @@
   (invoke [this kw]
     (get this kw))
   Result
+  (ok [this value] (assoc this :value value))
+  (err [this error] (assoc this :error error))
   (ok? ^Boolean [this] (some? (:value this)))
   (err? ^Boolean [this] (some? (:error this))))
 

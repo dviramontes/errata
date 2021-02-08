@@ -17,9 +17,10 @@
 (defn dividing-one-by [x]
  (let [result (e/init)]
    (try
-    (assoc result :value (/ 1 x))
+    (-> result (e/ok (/ 1 x))) 
     (catch Exception e 
-      (assoc result :error (str "caught exception: " (.getMessage e)))))))
+      (-> result 
+          (e/err (str "caught exception: " (.getMessage e))))))))
 
 (deftest dividing-one-by-zero-err-handling
   (testing "(/ 1 0)"
