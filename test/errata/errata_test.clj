@@ -11,8 +11,8 @@
   (testing "predicate functions"
     (is (= true (e/ok? (->(e/init 123)))))
     (is (= false (e/err? (->(e/init 123)))))
-    (is (= false (e/ok? (->(e/init nil :err)))))
-    (is (= true (e/err? (->(e/init nil :err)))))))
+    (is (= false (e/ok? (->(e/init)))))
+    (is (= false (e/err? (->(e/init)))))))
 
 (defn dividing-one-by [x]
  (let [result (e/init)]
