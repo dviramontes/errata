@@ -1,4 +1,4 @@
-.PHONY: repl lint test build
+.PHONY: repl lint test build deploy install
 
 repl: 
 	clj -M:repl
@@ -11,3 +11,9 @@ test:
 
 build:
 	clojure -X:jar
+
+deploy:
+	clojure -X:deploy
+
+install:
+	clojure -X:install

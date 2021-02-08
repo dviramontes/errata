@@ -2,17 +2,19 @@
   (:require [clojure.pprint :as pprint]))
 
 (defprotocol Result
-  "Implement ok/err as value"
+  "Implement <ok> & <err> as values"
   (ok? [result] "if value")
   (err? [result] "if error"))
+  ;; (ok-n [result])
+  ;; (err-n [result]))
 
 (defrecord Errata [value error]
   clojure.lang.IFn
   (invoke [this kw]
     (get this kw))
   Result
-  (ok? [this] (some? (:value this)))
-  (err? [this] (some? (:error this))))
+  (ok? ^Boolean [this] (some? (:value this)))
+  (err? ^Boolean [this] (some? (:error this))))
 
 (defn init
   "Initialize ->Errata with optional value, error, config arguments"
