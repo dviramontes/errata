@@ -16,16 +16,19 @@
       (is (true? (e/ok? ok-result)))
       (is (= :ok (.value ok-result)))
       (is (false? (e/err? ok-result)))
-
       (is (true? (e/err? not-ok-result)))
       (is (= :not-ok (.error not-ok-result)))
       (is (false? (e/ok? not-ok-result)))
       (is (nil? (.value not-ok-result)))))
+  (testing "ok / err getter methods"
+    (is (= 123 (e/ok (e/init 123))))
+    (is (= :new-error (e/err (e/err! (e/init) :new-error)))))
   (testing "predicate functions"
-    (is (= true (e/ok? (e/init 123))))
-    (is (= false (e/err? (e/init 123))))
-    (is (= false (e/ok? (e/init))))
-    (is (= false (e/err? (e/init))))))
+    (is (true? (e/ok? (e/init 123))))
+    (is (false? (e/err? (e/init 123))))
+    (is (false? (e/ok? (e/init))))
+    (is (false? (e/err? (e/init))))
+    (is (true? (e/err? (e/err! (e/init) :oh-no!))))))
 
 (defn dividing-one-by [x]
  (let [result (e/init)]
